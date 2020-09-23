@@ -23,7 +23,7 @@ import com.example.application.Crud.services.BranchService;
 import com.example.application.Crud.services.BusinessService;
 
 @RestController
-@RequestMapping("/api/branch")
+@RequestMapping("/branch")
 public class BranchController {
 
 	@Autowired
