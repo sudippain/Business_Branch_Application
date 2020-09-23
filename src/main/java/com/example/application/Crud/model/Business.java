@@ -57,10 +57,6 @@ public class Business {
 		this.branches = branches;
 	}
 
-	public Business(int i, String string, String string2, String string3, String string4, String string5) {
-		// TODO Auto-generated constructor stub
-	}
-
 	public int getBusiness_id() {
 		return business_id;
 	}

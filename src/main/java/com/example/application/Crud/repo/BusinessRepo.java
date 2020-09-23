@@ -1,5 +1,6 @@
 package com.example.application.Crud.repo;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -20,6 +21,8 @@ public interface BusinessRepo extends JpaRepository<Business, Integer> {
 	List<Business> findByBusinessName(@Param("keyword") String serchBusinessName);
 	@Query("select bs from Business bs where bs.pan = :panKey")
 	List<Business> findByPan(@Param("panKey") String searchByPan);
+	@Query("select bs from Business bs where bs.created_date = :createDate")
+	List<Business> findByCreateDate(@Param("createDate") Date sqlStartDate);
 
 	
 

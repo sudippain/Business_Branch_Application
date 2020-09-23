@@ -1,5 +1,6 @@
 package com.example.application.Crud.repo;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -18,6 +19,9 @@ public interface BranchRepo extends JpaRepository<Branch, Integer> {
 	
 	@Query("select br from Branch br where br.active_ind = :statusKey")
 	List<Branch> findByActiveInd(@Param("statusKey") String status);
+	
+	@Query("select br from Branch br where br.created_date = :createDateKey")
+	List<Branch> FindByCreateDate(@Param("createDateKey")  Date sqlStartDate);
 	
 
 }

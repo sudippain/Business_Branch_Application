@@ -1,5 +1,7 @@
 package com.example.application.Crud.services;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Optional;
 
@@ -86,6 +88,20 @@ public class BranchServiceImpl implements BranchService {
 	@Override
 	public List<Branch> searchByActiveInd(String status) throws BranchNotFoundException {
 		List<Branch> list1 = branchRepo.findByActiveInd(status);
+		if(list1.size()==0) {
+			throw new  BranchNotFoundException("There is no branch with this status");
+		}
+	
+		return list1;
+	}
+
+	@Override
+	public List<Branch> searchByCreateDate(String createDate) throws BranchNotFoundException, ParseException {
+		SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+		java.util.Date date = sdf1.parse(createDate);
+		java.sql.Date sqlStartDate = new java.sql.Date(date.getTime()); 
+		
+		List<Branch> list1 = branchRepo.FindByCreateDate(sqlStartDate);
 		if(list1.size()==0) {
 			throw new  BranchNotFoundException("There is no branch with this status");
 		}

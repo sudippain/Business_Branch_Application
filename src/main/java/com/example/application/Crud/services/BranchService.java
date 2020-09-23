@@ -1,5 +1,6 @@
 package com.example.application.Crud.services;
 
+import java.text.ParseException;
 import java.util.List;
 
 import com.example.application.Crud.exception.BranchAlreadyExistsException;
@@ -20,5 +21,7 @@ public interface BranchService {
 	List<Branch> searchByAddress(String address) throws BranchNotFoundException;
 
 	List<Branch> searchByActiveInd(String status) throws BranchNotFoundException;
+
+	List<Branch> searchByCreateDate(String createDate) throws BranchNotFoundException, ParseException;
 
 }

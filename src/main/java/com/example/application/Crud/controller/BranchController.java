@@ -76,4 +76,15 @@ public class BranchController {
 			return new ResponseEntity<String>("{ \"message\": \"" + e.getMessage() + "\"}", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+	
+	@GetMapping("/serach/ByCreateDate/{createDate}")
+	public ResponseEntity<?> SerachByCreateDate(@PathVariable String createDate) {
+	
+		try {
+			List<Branch> blist = branchService.searchByCreateDate(createDate);
+			return new ResponseEntity<List<Branch>>(blist, HttpStatus.OK);
+		} catch(Exception e){
+			return new ResponseEntity<String>("{ \"message\": \"" + e.getMessage() + "\"}", HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
 }
